@@ -1,0 +1,12 @@
+{
+  "name": "diyar-skills",
+  "owner": { "name": "DiyarFirasmusa" },
+  "plugins": [
+    {
+      "name": "app-training-videos",
+      "source": "./",
+      "description": "Make narration-free training videos for any web app (Playwright + Remotion, fake backend, Arabic/RTL ready).",
+      "version": "1.0.0"
+    }
+  ]
+}

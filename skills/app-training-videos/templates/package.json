@@ -1,0 +1,25 @@
+{
+  "name": "training-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "record": "node record/run.ts",
+    "aria": "node tools/aria.ts",
+    "check": "node tools/check.ts",
+    "render": "node tools/render.ts",
+    "frames": "node tools/frames.ts",
+    "scripts-md": "node tools/scripts-md.ts",
+    "guide": "node tools/guide.ts",
+    "playlist": "node tools/playlist.ts",
+    "deliver": "node tools/deliver.ts",
+    "make-videos": "node tools/make-all.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

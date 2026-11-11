@@ -1,0 +1,8 @@
+{
+  "name": "app-training-videos",
+  "version": "1.0.0",
+  "description": "Make narration-free training videos for any web app: Playwright recording against a fake backend, Remotion callouts, merged video.",
+  "author": { "name": "DiyarFirasmusa" },
+  "license": "MIT",
+  "keywords": ["training", "video", "playwright", "remotion", "documentation", "arabic", "rtl"]
+}
