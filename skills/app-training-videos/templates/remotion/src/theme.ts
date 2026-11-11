@@ -11,6 +11,24 @@ export { FPS } from './timeline.ts';
 export const W = 1920;
 export const H = 1080;
 
+/**
+ * The design knobs. Change a value, run `node tools/design-preview.ts`, look at the picture.
+ * Colours are in COLORS below, text sizes in SIZE (keep text at 36 px or more for 1080p).
+ */
+export const DESIGN = {
+  /** Callout width in px, and its corner radius. */
+  panelWidth: 820,
+  panelRadius: 28,
+  /** Highlight ring around the target: thickness and gap in px. */
+  ringWidth: 6,
+  ringPad: 10,
+  /** Dim everything except the target while a step is shown. */
+  dim: true,
+  /** Zoom toward small targets: largest factor, and the biggest target (px) that still zooms. */
+  maxZoom: 1.2,
+  zoomTargetMax: { w: 420, h: 90 },
+} as const;
+
 export const COLORS = {
   brand: '#6E2C3F',
   brandDeep: '#2A0F18',

@@ -1,6 +1,7 @@
 import { Composition } from 'remotion';
 import { Training, timingFor } from './Training.tsx';
 import { FPS, H, W } from './theme.ts';
+import { Preview, type PreviewProps } from './Preview.tsx';
 import type { TrainingProps } from './types.ts';
 
 const placeholder: TrainingProps = {
@@ -23,6 +24,7 @@ const placeholder: TrainingProps = {
 };
 
 export const Root = () => (
+  <>
   <Composition
     id="Training"
     component={Training}
@@ -33,4 +35,14 @@ export const Root = () => (
     defaultProps={placeholder}
     calculateMetadata={({ props }) => ({ durationInFrames: timingFor(props.data).total })}
   />
+  <Composition
+    id="DesignPreview"
+    component={Preview}
+    width={W}
+    height={H}
+    fps={FPS}
+    durationInFrames={120}
+    defaultProps={{ kind: 'welcome', lang: 'ar', background: null, brand: 'My app' } satisfies PreviewProps}
+  />
+  </>
 );

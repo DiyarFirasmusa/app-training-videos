@@ -12,7 +12,7 @@ if [ -e "$TARGET/training.config.ts" ]; then
 fi
 mkdir -p "$TARGET"
 cp -R "$SKILL_DIR/templates/." "$TARGET/"
-printf 'node_modules\nremotion/node_modules\nrecordings/\noutput/\nframes/\naria/\n' > "$TARGET/.gitignore"
+printf 'node_modules\nremotion/node_modules\nrecordings/\noutput/\nframes/\naria/\ndesign-preview/\n' > "$TARGET/.gitignore"
 
 if command -v bun >/dev/null 2>&1; then PM="bun install"; else PM="npm install"; fi
 (cd "$TARGET" && $PM)

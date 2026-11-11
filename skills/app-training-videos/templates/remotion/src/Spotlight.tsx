@@ -1,5 +1,5 @@
 import type { Rect } from './layout.ts';
-import { COLORS } from './theme.ts';
+import { COLORS, DESIGN } from './theme.ts';
 
 interface Props {
   ring: Rect;
@@ -10,7 +10,7 @@ interface Props {
 
 /** A glowing frame around the target with the rest of the picture dimmed. */
 export const Spotlight = ({ ring, opacity, pulse, dim }: Props) => {
-  const pad = 10;
+  const pad = DESIGN.ringPad;
   return (
     <div
       style={{
@@ -21,8 +21,8 @@ export const Spotlight = ({ ring, opacity, pulse, dim }: Props) => {
         height: ring.h + pad * 2,
         boxSizing: 'border-box',
         borderRadius: 16,
-        border: `6px solid ${COLORS.amber}`,
-        boxShadow: `${dim ? `0 0 0 4000px ${COLORS.scrim}, ` : ''}0 0 ${18 + pulse * 22}px ${6 + pulse * 6}px rgba(243,181,68,0.55)`,
+        border: `${DESIGN.ringWidth}px solid ${COLORS.amber}`,
+        boxShadow: `${dim && DESIGN.dim ? `0 0 0 4000px ${COLORS.scrim}, ` : ''}0 0 ${18 + pulse * 22}px ${6 + pulse * 6}px rgba(243,181,68,0.55)`,
         opacity,
         pointerEvents: 'none',
       }}

@@ -30,6 +30,10 @@ The skill sets up `training-video/` in the project, reads your routes and API, b
 
 Needs: Node 24+ (runs TypeScript directly), bun or npm, Playwright's Chromium (installed by the setup script), Internet access to fetch the Cairo font while rendering.
 
+## Change the design
+
+Tell Claude what to change (colour, size, callout shape, zoom). It edits `training-video/remotion/src/theme.ts`, runs `node tools/design-preview.ts` and shows one picture with every design (about 20 seconds, no recording, no render). Videos are rendered only after you approve.
+
 ## What makes it cheap
 
 It was extracted from a run that made 18 videos and was far too expensive. The skill encodes the fixes: no sub-agents for authoring, pages read as text (`tools/aria.ts`) instead of screenshots, automated checks before looking at anything (`tools/check.ts`), one small overview image per video, fast recording with the reading time added at render time (about 3x faster), and a render cache that skips unchanged videos.

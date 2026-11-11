@@ -18,7 +18,8 @@ These rules come from a first run that was far too expensive. Follow them.
 3. **Record fast.** The recorder does the actions in about a third of the time; the renderer freezes the frame for the reading time. `REALTIME=1` forces real-time waiting (almost never needed).
 4. **Run one recording at a time** on one warmed dev server. Parallel recordings fought over the CPU and the Vite cache and produced timeouts and page reloads (every one was re-recorded).
 5. **Render once, at the end.** `render.ts` skips videos whose steps, recording and overlay code did not change (`--force` overrides). Decide visual changes (zoom, colours) before the first full render; a change to `remotion/src` re-renders everything.
-6. **Check before you look.** `node tools/check.ts` flags stopped recordings, unmocked requests, text over the limits and steps too short to read.
+6. **Test design changes on stills, not videos.** `node tools/design-preview.ts` draws every overlay design (welcome card, callout below / beside the target with a tip or a warning, zoom, chapter, summary, outro) on one picture in about 20 seconds, with no recording and no render. To change the look, edit `remotion/src/theme.ts` (`DESIGN` knobs, `COLORS`, `SIZE`) or a component, run the preview, look at `design-preview/preview.jpg`, repeat. Render the videos only after the user approves it. `--lang en|ar` and `--bg recordings/<id>/shots/NN.png` choose the language and the app picture behind the callouts.
+7. **Check before you look.** `node tools/check.ts` flags stopped recordings, unmocked requests, text over the limits and steps too short to read.
 
 ## Steps
 

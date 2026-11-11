@@ -8,6 +8,7 @@
     "aria": "node tools/aria.ts",
     "check": "node tools/check.ts",
     "render": "node tools/render.ts",
+    "design": "node tools/design-preview.ts",
     "frames": "node tools/frames.ts",
     "scripts-md": "node tools/scripts-md.ts",
     "guide": "node tools/guide.ts",

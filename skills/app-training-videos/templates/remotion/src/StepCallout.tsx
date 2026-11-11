@@ -1,10 +1,10 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 import { estimateLines, nearestOnRect, type PanelPlacement, type Rect } from './layout.ts';
-import { COLORS, FONT, SIZE } from './theme.ts';
+import { COLORS, DESIGN, FONT, SIZE } from './theme.ts';
 import { ease } from './ui.tsx';
 import type { StepData } from './types.ts';
 
-export const PANEL_W = 820;
+export const PANEL_W = DESIGN.panelWidth;
 const PAD_X = 40;
 const PAD_Y = 30;
 const NOTE_PAD = 20;
@@ -121,7 +121,7 @@ export const StepCallout = ({ labels, step, total, placement, ring, localSeconds
           color: COLORS.ink,
           background: COLORS.panel,
           border: `4px solid ${COLORS.panelEdge}`,
-          borderRadius: 28,
+          borderRadius: DESIGN.panelRadius,
           boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
           opacity,
           transform: `translateY(${(1 - appear) * 24}px)`,

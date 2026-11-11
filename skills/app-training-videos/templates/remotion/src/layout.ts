@@ -1,5 +1,5 @@
 import type { Box, Side } from './types.ts';
-import { H, W } from './theme.ts';
+import { DESIGN, H, W } from './theme.ts';
 
 export interface Rect {
   x: number;
@@ -38,11 +38,11 @@ const clamp = (v: number, lo: number, hi: number): number => Math.max(lo, Math.m
 
 /** Camera that zooms toward the target while keeping the whole target inside the frame. */
 export const cameraFor = (box: Box | null, zoom: boolean): Camera => {
-  if (!box || !zoom || box.w > 420 || box.h > 90) {
+  if (!box || !zoom || box.w > DESIGN.zoomTargetMax.w || box.h > DESIGN.zoomTargetMax.h) {
     return IDENTITY;
   }
   const edge = 40;
-  for (let s = clamp(Math.min(760 / box.w, 300 / box.h), 1, 1.2); s >= 1.06; s -= 0.03) {
+  for (let s = clamp(Math.min(760 / box.w, 300 / box.h), 1, DESIGN.maxZoom); s >= 1.06; s -= 0.03) {
     const cx = box.x + box.w / 2;
     const cy = box.y + box.h / 2;
     const loX = Math.max(W * (1 - s), edge - box.x * s);

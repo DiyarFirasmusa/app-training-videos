@@ -1,7 +1,8 @@
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { cpus, homedir } from 'node:os';
+import { cpus } from 'node:os';
+import { findBrowser } from './browser.ts';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,31 +25,6 @@ const loadAll = (): { id: string; data: Meta & Record<string, unknown> }[] =>
     .filter((d) => existsSync(join(recordings, d, 'steps.json')))
     .map((id) => ({ id, data: JSON.parse(readFileSync(join(recordings, id, 'steps.json'), 'utf8')) }))
     .sort((a, b) => a.data.number - b.data.number);
-
-/**
- * Remotion's own headless Chrome crashes its GPU process on this machine (the project path
- * has spaces and brackets). The Chromium that Playwright already installed works, so use it.
- */
-const findBrowser = (): string | null => {
-  if (process.env.REMOTION_BROWSER) {
-    return process.env.REMOTION_BROWSER;
-  }
-  const base = join(homedir(), 'Library', 'Caches', 'ms-playwright');
-  if (!existsSync(base)) {
-    return null;
-  }
-  const shells = readdirSync(base)
-    .filter((d) => d.startsWith('chromium_headless_shell-'))
-    .sort()
-    .reverse();
-  for (const dir of shells) {
-    const exe = join(base, dir, 'chrome-headless-shell-mac-arm64', 'chrome-headless-shell');
-    if (existsSync(exe)) {
-      return exe;
-    }
-  }
-  return null;
-};
 
 /** Hash of everything that changes a video: its steps, its recording and the overlay code. */
 const fingerprint = (id: string): string => {
